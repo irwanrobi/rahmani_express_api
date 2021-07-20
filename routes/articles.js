@@ -1,16 +1,17 @@
 import express from 'express';
-import uploadHelper from '../helpers/uploadHelper.js'
+import uploadHelper from '../helpers/uploadHelper.js';
+import { isAuthenticated } from '../middleware/authJWT.js';
 
-import { getArticles, getArticle, createArticle, updateArticle, deleteArticle } from '../controllers/articles.js';
+import { getArticles, getArticle, createArticle, updateArticle, deleteArticle } from '../controllers/articlesController.js';
 
-import { validateArticle } from '../validators/articlesValidator.js'
+import { validateArticle } from '../validations/articlesValidator.js'
 
 const router = express.Router();
 
 router.get('/', getArticles);
-router.post('/', uploadHelper, validateArticle, createArticle);
+router.post('/', uploadHelper, validateArticle, isAuthenticated, createArticle);
 router.get('/:id', getArticle);
-router.patch('/:id', updateArticle);
-router.delete('/:id', deleteArticle);
+router.patch('/:id', isAuthenticated, updateArticle);
+router.delete('/:id', isAuthenticated, deleteArticle);
 
 export default router;

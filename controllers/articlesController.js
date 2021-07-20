@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { validationResult } from "express-validator";
 
-import article from '../models/article.js';
+import articleModel from '../models/articleModel.js';
 
 export const getArticles = async (req, res) => {
     try {
-        const articles = await article.find();
+        const articles = await articleModel.find();
 
         res.status(200).json({
             success: true, 
@@ -24,7 +24,7 @@ export const getArticle = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const articleDetail = await article.findById(id);
+        const articleDetail = await articleModel.findById(id);
 
         res.status(200).json({
             success: true, 
@@ -55,7 +55,7 @@ export const createArticle = async (req, res, next) => {
 
     const { title, content, summary, author, tags } = req.body;
 
-    const newArticle = new article({ title, content, summary, author, tags, featuredImage: fileName});
+    const newArticle = new articleModel({ title, content, summary, author, tags, featuredImage: fileName});
 
     try {
         await newArticle.save();
@@ -81,7 +81,7 @@ export const updateArticle = async (req, res) => {
 
     const updatedArticle = { title, content, summary, author, tags, featuredImage, _id: id };
 
-    await article.findByIdAndUpdate(id, updatedArticle, { new: true });
+    await articleModel.findByIdAndUpdate(id, updatedArticle, { new: true });
 
     res.status(202).json({
         success: true, 
@@ -98,7 +98,7 @@ export const deleteArticle = async (req, res) => {
         return res.status(404).send(`No article with id: ${id}`);
     } 
 
-    await article.findByIdAndRemove(id);
+    await articleModel.findByIdAndRemove(id);
 
     res.status(202).json({
         success: true, 

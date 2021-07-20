@@ -1,15 +1,16 @@
 import express from 'express';
+import { isAuthenticated } from '../middleware/authJWT.js';
 
-import { getOffers, getOffer, createOffer, updateOffer, deleteOffer } from '../controllers/offers.js';
+import { getOffers, getOffer, createOffer, updateOffer, deleteOffer } from '../controllers/offersController.js';
 
-import { validateOffer } from '../validators/offersValidator.js'
+import { validateOffer } from '../validations/offersValidator.js'
 
 const router = express.Router();
 
-router.get('/', getOffers);
+router.get('/', isAuthenticated, getOffers);
 router.post('/', validateOffer, createOffer);
-router.get('/:id', getOffer);
-router.patch('/:id', updateOffer);
-router.delete('/:id', deleteOffer);
+router.get('/:id', isAuthenticated, getOffer);
+router.patch('/:id', isAuthenticated, updateOffer);
+router.delete('/:id', isAuthenticated, deleteOffer);
 
 export default router;

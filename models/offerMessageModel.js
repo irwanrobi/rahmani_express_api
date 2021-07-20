@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const offerSchema = mongoose.Schema({
+const offerSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
@@ -14,7 +14,6 @@ const offerSchema = mongoose.Schema({
         trim: true,
         required: true,
         lowercase: true,
-        // unique: true,
     },
     phone: {
         type: String,
@@ -32,6 +31,6 @@ const offerSchema = mongoose.Schema({
     },
 })
 
-const OfferMessage = mongoose.model('OfferMessage', offerSchema);
+const offerMessageModel = mongoose.model('OfferMessage', offerSchema);
 
-export default OfferMessage;
+export default offerMessageModel;

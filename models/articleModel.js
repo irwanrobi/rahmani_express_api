@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const articleSchema = mongoose.Schema({
+const articleSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -28,6 +28,6 @@ const articleSchema = mongoose.Schema({
     },
 })
 
-const article = mongoose.model('Article', articleSchema);
+const articleModel = mongoose.model('Article', articleSchema);
 
-export default article;
+export default articleModel;

@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { validationResult } from "express-validator";
 
-import OfferMessage from '../models/offerMessage.js'
+import offerMessageModel from '../models/offerMessageModel.js'
 
 export const getOffers = async (req, res) => {
     try {
-        const offerMessages = await OfferMessage.find();
+        const offerMessages = await offerMessageModel.find();
         res.status(200).json({
             success: true, 
             status: 200,
@@ -20,7 +20,7 @@ export const getOffer = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const offerDetail = await OfferMessage.findById(id);
+        const offerDetail = await offerMessageModel.findById(id);
 
         res.status(200).json({
             success: true, 
@@ -48,7 +48,7 @@ export const createOffer = async (req, res, next) => {
 
     const { firstName, lastName, email, phone, messageText } = req.body;
 
-    const newOfferMessage = new OfferMessage({ firstName, lastName, email, phone, messageText });
+    const newOfferMessage = new offerMessageModel({ firstName, lastName, email, phone, messageText });
     
     try {
         await newOfferMessage.save();
@@ -74,7 +74,7 @@ export const updateOffer = async (req, res) => {
 
     const updatedOffer = { firstName, lastName, email, phone, messageText, _id: id };
 
-    await OfferMessage.findByIdAndUpdate(id, updatedOffer, { new: true });
+    await offerMessageModel.findByIdAndUpdate(id, updatedOffer, { new: true });
 
     res.status(202).json({
         success: true, 
@@ -91,7 +91,7 @@ export const deleteOffer = async (req, res) => {
         return res.status(404).send(`No offer message with id: ${id}`);
     } 
 
-    await OfferMessage.findByIdAndRemove(id);
+    await offerMessageModel.findByIdAndRemove(id);
 
     res.status(202).json({
         success: true, 
