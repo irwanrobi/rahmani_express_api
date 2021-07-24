@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/', getArticles);
 router.post('/', uploadHelper, validateArticle, isAuthenticated, createArticle);
 router.get('/:id', getArticle);
-router.patch('/:id', isAuthenticated, updateArticle);
+router.patch('/:id', uploadHelper, validateArticle, isAuthenticated, updateArticle);
 router.delete('/:id', isAuthenticated, deleteArticle);
 
 export default router;

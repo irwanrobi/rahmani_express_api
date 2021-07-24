@@ -1,3 +1,6 @@
+import mongoose from 'mongoose';
+import { validationResult } from "express-validator";
+
 import userModel from '../models/userModel.js';
 
 export const getUsers = async (req, res) => {
@@ -27,7 +30,7 @@ export const updateUser = async (req, res) => {
         return res.status(404).send(`No user with id: ${id}`);
     }
 
-    const updatedUser = { full_name, email, roles, _id: id };
+    const updatedUser = { full_name, email, roles };
 
     await userModel.findByIdAndUpdate(id, updatedUser, { new: true });
 

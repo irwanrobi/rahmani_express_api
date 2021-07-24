@@ -50,7 +50,7 @@ export const createArticle = async (req, res, next) => {
         next();
     }
 
-    const filePath = req.file.path.replace(/\\/g, "/");
+    // const filePath = req.file.path.replace(/\\/g, "/");
     const fileName = req.file.filename;
 
     const { title, content, summary, author, tags } = req.body;
@@ -79,7 +79,7 @@ export const updateArticle = async (req, res) => {
         return res.status(404).send(`No article with id: ${id}`);
     }
 
-    const updatedArticle = { title, content, summary, author, tags, featuredImage, _id: id };
+    const updatedArticle = { title, content, summary, author, tags, featuredImage };
 
     await articleModel.findByIdAndUpdate(id, updatedArticle, { new: true });
 
