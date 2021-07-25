@@ -21,8 +21,8 @@ var corsOptions = {
 
 app.use(express.static('./public'));
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
-export const isAuthenticated = async (req, res, next) => {
+const isAuthenticated = async (req, res, next) => {
     var token = req.body.token || req.query.token || req.headers.authorization; 
 
     if(token){ //jika ada token
@@ -25,6 +25,8 @@ export const isAuthenticated = async (req, res, next) => {
         }); // melkukan respon kalau token tidak ada
     }
 }
+
+module.exports = { isAuthenticated };
 
 
 

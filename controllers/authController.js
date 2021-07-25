@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 
 const userModel = require('../models/userModel');
 
-export const register = async (req, res, next) => {
+const register = async (req, res, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -52,7 +52,7 @@ export const register = async (req, res, next) => {
 }
 
 
-export const login = async (req, res, next) => {
+const login = async (req, res, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -104,3 +104,5 @@ export const login = async (req, res, next) => {
     // console.log(user.roles)
     // console.log(user.roles[0].name)
 }
+
+module.exports = { register, login };

@@ -24,10 +24,10 @@ const articleSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
 })
 
 const articleModel = mongoose.model('Article', articleSchema);
 
-export default articleModel;
+module.exports = articleModel;

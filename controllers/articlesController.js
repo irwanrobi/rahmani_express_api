@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const articleModel = require('../models/articleModel');
 
-export const getArticles = async (req, res) => {
+exports.getArticles = async (req, res) => {
     try {
         const articles = await articleModel.find();
 
@@ -20,7 +20,7 @@ export const getArticles = async (req, res) => {
     }
 }
 
-export const getArticle = async (req, res) => {
+exports.getArticle = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -37,7 +37,7 @@ export const getArticle = async (req, res) => {
     }
 }
 
-export const createArticle = async (req, res, next) => {
+exports.createArticle = async (req, res, next) => {
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -71,7 +71,7 @@ export const createArticle = async (req, res, next) => {
     }
 }
 
-export const updateArticle = async (req, res) => {
+exports.updateArticle = async (req, res) => {
     const { id } = req.params;
     const { title, content, summary, author, tags, featuredImage } = req.body;
 
@@ -91,7 +91,7 @@ export const updateArticle = async (req, res) => {
     });
 }
 
-export const deleteArticle = async (req, res) => {
+exports.deleteArticle = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {

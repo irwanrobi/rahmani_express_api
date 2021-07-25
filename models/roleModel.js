@@ -8,10 +8,10 @@ const roleSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
 })
 
 const roleModel = mongoose.model('Role', roleSchema);
 
-export default roleModel;
+module.exports = roleModel;

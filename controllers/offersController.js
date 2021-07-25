@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const offerMessageModel = require('../models/offerMessageModel');
 
-export const getOffers = async (req, res) => {
+const getOffers = async (req, res) => {
     try {
         const offerMessages = await offerMessageModel.find();
         res.status(200).json({
@@ -16,7 +16,7 @@ export const getOffers = async (req, res) => {
     }
 }
 
-export const getOffer = async (req, res) => {
+const getOffer = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -33,7 +33,7 @@ export const getOffer = async (req, res) => {
     }
 }
 
-export const createOffer = async (req, res, next) => {
+const createOffer = async (req, res, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -64,7 +64,7 @@ export const createOffer = async (req, res, next) => {
     }
 }
 
-export const updateOffer = async (req, res) => {
+const updateOffer = async (req, res) => {
     const { id } = req.params;
     const { firstName, lastName, email, phone, messageText } = req.body;
 
@@ -84,7 +84,7 @@ export const updateOffer = async (req, res) => {
     });
 }
 
-export const deleteOffer = async (req, res) => {
+const deleteOffer = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -99,3 +99,5 @@ export const deleteOffer = async (req, res) => {
         message: 'Offer Message has been deleted successfully', 
     });
 }
+
+module.exports = { getOffers, getOffer, createOffer, updateOffer, deleteOffer };

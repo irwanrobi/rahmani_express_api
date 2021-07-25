@@ -10,4 +10,4 @@ const router = express.Router();
 router.post('/login', validateUserLogin, login);
 router.post('/register', validateUserRegister, isAuthenticated, register);
 
-export default router;
+module.exports = router;

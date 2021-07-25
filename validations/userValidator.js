@@ -1,6 +1,6 @@
 const { check } = require('express-validator');
 
-export const validateUserLogin = [
+const validateUserLogin = [
     check("email")
         .not()
         .isEmpty()
@@ -20,7 +20,7 @@ export const validateUserLogin = [
         .withMessage("Minimum 3 characters required!"),
 ];
 
-export const validateUserRegister = [
+const validateUserRegister = [
     check("full_name")
         .not()
         .isEmpty()
@@ -55,3 +55,5 @@ export const validateUserRegister = [
         .bail()
         .withMessage("Minimum 1 character required!"),
 ];
+
+module.exports = { validateUserLogin, validateUserRegister };

@@ -1,6 +1,6 @@
 const { check } = require('express-validator');
 
-export const validateOffer = [
+const validateOffer = [
     check("firstName")
         .not()
         .isEmpty()
@@ -43,3 +43,5 @@ export const validateOffer = [
         .bail()
         .withMessage("Minimum 10 characters required!"),
 ];
+
+module.exports = { validateOffer };

@@ -27,10 +27,10 @@ const offerSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
 })
 
 const offerMessageModel = mongoose.model('OfferMessage', offerSchema);
 
-export default offerMessageModel;
+module.exports = offerMessageModel;

@@ -11,4 +11,4 @@ router.get('/:id', getArticle);
 router.patch('/:id', uploadHelper, validateArticle, isAuthenticated, updateArticle);
 router.delete('/:id', isAuthenticated, deleteArticle);
 
-export default router;
+module.exports = router;

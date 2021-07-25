@@ -1,6 +1,6 @@
 const { check } = require('express-validator');
 
-export const validateRole = [
+const validateRole = [
     check("name")
         .not()
         .isEmpty()
@@ -10,3 +10,5 @@ export const validateRole = [
         .bail()
         .withMessage("Minimum 2 characters required!"),
 ]
+
+module.exports = { validateRole };

@@ -2,7 +2,7 @@ const userModel = require('../models/userModel');
 
 const ROLES = ["user", "admin", "moderator"];
 
-export const checkDuplicateUsernameOrEmail = (req, res, next) => {
+exports.checkDuplicateUsernameOrEmail = (req, res, next) => {
     
     // UserName
     userModel.findOne({
@@ -46,7 +46,7 @@ export const checkDuplicateUsernameOrEmail = (req, res, next) => {
     })
 }
 
-export const checkDuplicateUsernameOrEmail = (req, res, next) => {
+exports.checkDuplicateUsernameOrEmail = (req, res, next) => {
     if (req.body.roles) {
         for (let i = 0; i < req.body.roles.length; i++) {
             if (!ROLES.includes(req.body.roles[i])) {

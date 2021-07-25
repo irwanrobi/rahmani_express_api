@@ -1,6 +1,6 @@
 const { check, body } = require('express-validator');
 
-export const validateArticle = [
+const validateArticle = [
     check("title")
         .not()
         .isEmpty()
@@ -44,3 +44,5 @@ export const validateArticle = [
     //     .bail()
     //     .withMessage("Featured Image is required!"),
 ]
+
+module.exports = { validateArticle };

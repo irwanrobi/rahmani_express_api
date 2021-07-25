@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator');
 
 const roleModel = require('../models/roleModel');
 
-export const getRoles = async (req, res) => {
+exports.getRoles = async (req, res) => {
     try {
         const roles = await roleModel.find();
 
@@ -19,7 +19,7 @@ export const getRoles = async (req, res) => {
 }
 
 
-export const createRole = async (req, res, next) => {
+exports.createRole = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ 
@@ -50,7 +50,7 @@ export const createRole = async (req, res, next) => {
 }
 
 
-export const deleteRole = async (req, res) => {
+exports.deleteRole = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {

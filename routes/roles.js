@@ -11,4 +11,4 @@ router.get('/', isAuthenticated, getRoles);
 router.post('/', validateRole, isAuthenticated, createRole);
 router.delete('/:id', isAuthenticated, deleteRole);
 
-export default router;
+module.exports = router;

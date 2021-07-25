@@ -5,8 +5,8 @@ const { getUsers, updateUser, deleteUser } = require('../controllers/usersContro
 
 const router = express.Router();
 
-router.get('/', isAuthenticated, getUsers);
+router.get('/', getUsers);
 router.patch('/:id', isAuthenticated, updateUser);
 router.delete('/:id', isAuthenticated, deleteUser);
 
-export default router;
+module.exports = router;

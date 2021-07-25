@@ -13,4 +13,4 @@ router.get('/:id', isAuthenticated, getOffer);
 router.patch('/:id', isAuthenticated, updateOffer);
 router.delete('/:id', isAuthenticated, deleteOffer);
 
-export default router;
+module.exports = router;
