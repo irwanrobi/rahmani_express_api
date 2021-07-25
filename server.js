@@ -32,6 +32,9 @@ app.get('/', (req, res) => {
       message: "Welcome to Rahmani application."
     });
 });
+app.get('/check', (req, res) => {
+  res.send('App is Running on ' + process.env.BASE_URL);
+});
 app.use('/auth', authRoutes);
 app.use('/roles', roleRoutes);
 app.use('/users', userRoutes);
