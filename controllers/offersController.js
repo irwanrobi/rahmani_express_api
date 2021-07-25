@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import { validationResult } from "express-validator";
+const mongoose = require('mongoose');
+const { validationResult } = require('express-validator');
 
-import offerMessageModel from '../models/offerMessageModel.js'
+const offerMessageModel = require('../models/offerMessageModel');
 
 export const getOffers = async (req, res) => {
     try {

@@ -1,7 +1,7 @@
-import express from 'express';
-import { isAuthenticated } from '../middleware/authJWT.js'
+const express = require('express');
+const { isAuthenticated } = require('../middleware/authJWT');
 
-import { getUsers, updateUser, deleteUser } from '../controllers/usersController.js'
+const { getUsers, updateUser, deleteUser } = require('../controllers/usersController');
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 export const isAuthenticated = async (req, res, next) => {
     var token = req.body.token || req.query.token || req.headers.authorization; 

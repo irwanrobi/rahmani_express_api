@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import { validationResult } from "express-validator";
+const mongoose = require('mongoose');
+const { validationResult } = require('express-validator');
 
-import roleModel from '../models/roleModel.js'
+const roleModel = require('../models/roleModel');
 
 export const getRoles = async (req, res) => {
     try {

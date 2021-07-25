@@ -1,17 +1,17 @@
-import dotenv  from 'dotenv';
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+const dotenv = require('dotenv');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-import cors from 'cors';
+const cors = require('cors');
 
 dotenv.config()
 
-import authRoutes from './routes/auth.js'
-import roleRoutes from './routes/roles.js'
-import userRoutes from './routes/users.js'
-import offerRoutes from './routes/offers.js';
-import articleRoutes from './routes/articles.js'
+const authRoutes = require('./routes/auth');
+const roleRoutes = require('./routes/roles');
+const userRoutes = require('./routes/users');
+const offerRoutes = require('./routes/offers');
+const articleRoutes = require('./routes/articles');
 
 const app = express();
 
@@ -21,8 +21,8 @@ var corsOptions = {
 
 app.use(express.static('./public'));
 
-app.use(express.json({ limit: "30mb", extended: true }));
-app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {

@@ -1,9 +1,9 @@
-import express from 'express';
-import { isAuthenticated } from '../middleware/authJWT.js';
+const express = require('express');
+const { isAuthenticated } = require('../middleware/authJWT');
 
-import { getRoles, createRole, deleteRole } from '../controllers/rolesController.js';
+const { getRoles, createRole, deleteRole } = require('../controllers/rolesController');
 
-import { validateRole } from '../validations/rolesValidator.js'
+const { validateRole } = require('../validations/rolesValidator');
 
 const router = express.Router();
 

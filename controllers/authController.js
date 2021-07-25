@@ -1,9 +1,10 @@
-import mongoose from 'mongoose';
-import { validationResult } from "express-validator";
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+const mongoose = require('mongoose');
+const { validationResult } = require('express-validator');
 
-import userModel from '../models/userModel.js';
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+const userModel = require('../models/userModel');
 
 export const register = async (req, res, next) => {
 

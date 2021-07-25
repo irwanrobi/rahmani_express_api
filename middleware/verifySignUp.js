@@ -1,4 +1,4 @@
-import userModel from '../models/userModel.js';
+const userModel = require('../models/userModel');
 
 const ROLES = ["user", "admin", "moderator"];
 

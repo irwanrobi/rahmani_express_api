@@ -1,11 +1,8 @@
-import express from 'express';
-import uploadHelper from '../helpers/uploadHelper.js';
-import { isAuthenticated } from '../middleware/authJWT.js';
-
-import { getArticles, getArticle, createArticle, updateArticle, deleteArticle } from '../controllers/articlesController.js';
-
-import { validateArticle } from '../validations/articlesValidator.js'
-
+const express = require('express');
+const uploadHelper = require('../helpers/uploadHelper');
+const { isAuthenticated } = require('../middleware/authJWT');
+const { getArticles, getArticle, createArticle, updateArticle, deleteArticle } = require('../controllers/articlesController');
+const { validateArticle } = require('../validations/articlesValidator');
 const router = express.Router();
 
 router.get('/', getArticles);

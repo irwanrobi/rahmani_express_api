@@ -1,4 +1,4 @@
-import { check, body } from "express-validator";
+const { check } = require('express-validator');
 
 export const validateRole = [
     check("name")

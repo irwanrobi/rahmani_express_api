@@ -1,9 +1,9 @@
-import express from 'express';
-import { isAuthenticated } from '../middleware/authJWT.js'
+const express = require('express');
+const { isAuthenticated } = require('../middleware/authJWT');
 
-import { register, login } from '../controllers/authController.js';
+const { register, login } = require('../controllers/authController');
 
-import { validateUserRegister, validateUserLogin } from '../validations/userValidator.js'
+const { validateUserRegister, validateUserLogin } = require('../validations/userValidator');
 
 const router = express.Router();
 
