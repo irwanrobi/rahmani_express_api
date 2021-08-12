@@ -15,8 +15,9 @@ const articleRoutes = require('./routes/articles');
 
 const app = express();
 
-var corsOptions = {
-  origin: [ process.env.APP_CONSUMER_URL ]
+const allowedOrigins = [ process.env.APP_CONSUMER_URL ];
+const corsOptions = {
+  origin: allowedOrigins
 };
 
 app.use(express.static('./public'));
