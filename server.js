@@ -1,11 +1,8 @@
-const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const cors = require('cors');
-
-dotenv.config()
 
 const authRoutes = require('./routes/auth');
 const roleRoutes = require('./routes/roles');
@@ -13,11 +10,12 @@ const userRoutes = require('./routes/users');
 const offerRoutes = require('./routes/offers');
 const articleRoutes = require('./routes/articles');
 
+const APP_CONFIG = require('./config')
+
 const app = express();
 
-const allowedOrigins = [ process.env.APP_CONSUMER_URL ];
 const corsOptions = {
-  origin: allowedOrigins
+  origin: APP_CONFIG.APP.CONSUMER_URL
 };
 
 app.use(express.static('./public'));
@@ -28,13 +26,13 @@ app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.json({
-      appName: process.env.npm_package_name,
-      appVersion: process.env.npm_package_version,
+      appName: APP_CONFIG.APP.NAME,
+      appVersion: APP_CONFIG.APP.VERSION,
       message: "Welcome to Rahmani application."
     });
 });
 app.get('/check', (req, res) => {
-  res.send('App is Running on ' + process.env.BASE_URL);
+  res.send('App is Running on ' + APP_CONFIG.APP.BASE_URL);
 });
 app.use('/auth', authRoutes);
 app.use('/roles', roleRoutes);
@@ -43,8 +41,8 @@ app.use('/offers', offerRoutes);
 app.use('/articles', articleRoutes);
 
 // MongoDB Atlas
-const CONNECTION_URL = process.env.DB_CONNECT;
-const PORT = process.env.PORT || 5000;
+const CONNECTION_URL = APP_CONFIG.DB.HOST;
+const PORT = APP_CONFIG.APP.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, {
     useNewUrlParser: true,

@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
+const APP_CONFIG = require('../config')
+
 const isAuthenticated = async (req, res, next) => {
     var token = req.body.token || req.query.token || req.headers.authorization; 
 
     if(token){ //jika ada token
-        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { //jwt melakukan verify
+        jwt.verify(token, APP_CONFIG.APP.JWT_SECRET, (err, decoded) => { //jwt melakukan verify
           if (err) { // apa bila ada error
             res.json({
               success: false, 

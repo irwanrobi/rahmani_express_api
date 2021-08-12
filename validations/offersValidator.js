@@ -8,7 +8,8 @@ const validateOffer = [
         .withMessage("First Name is required!")
         .isLength({ min: 3 })
         .bail()
-        .withMessage("Minimum 3 characters required!"),
+        .withMessage("Minimum 3 characters required!")
+        .trim(),
     check("lastName")
         .not()
         .isEmpty()
@@ -16,7 +17,8 @@ const validateOffer = [
         .withMessage("Last Name is required!")
         .isLength({ min: 3 })
         .bail()
-        .withMessage("Minimum 3 characters required!"),
+        .withMessage("Minimum 3 characters required!")
+        .trim(),
     check("email")
         .not()
         .isEmpty()
